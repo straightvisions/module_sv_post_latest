@@ -16,10 +16,12 @@
 			$this->path								= $path;
 			$this->url								= $url;
 			$this->name								= get_class($this);
-			
+		}
+		public function init() {
 			add_shortcode($this->get_module_name(), array($this, 'shortcode'));
 			add_action('widgets_init', array($this, 'sidebars'));
 		}
+
 		public function shortcode($settings, $content=''){
 			$settings								= shortcode_atts(
 				array(
@@ -34,7 +36,7 @@
 			);
 			$this->module_enqueue_scripts($settings['inline']);
 			ob_start();
-			include($this->get_path('lib/tpl/frontend.php'));
+			include($this->get_file_path('lib/tpl/frontend.php'));
 			$output									= ob_get_contents();
 			ob_end_clean();
 			
