@@ -28,7 +28,7 @@
 
   				<h4 class="sv-post-latest-post-titlx"><?php echo the_title(); ?></h4>
 					<div class="sv-post-latest-post-thumb mb-3">
-						<?php echo the_post_thumbnail(); ?>
+						<?php echo the_post_thumbnail('medium'); ?>
 					</div>
 					<div class="sv-post-latest-post-text">
 						<p class=""><?php echo get_the_content(); ?></p>
