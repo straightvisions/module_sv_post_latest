@@ -31,7 +31,7 @@ class sv_post_latest extends init {
 	public function shortcode( $settings, $content = '' ) {
 		// Load Styles
 		static::$scripts->create( $this )
-		                ->set_path( $this->get_file_path( 'lib/css/frontend.css' ) );
+		                ->set_path( $this->get_path( 'lib/css/frontend.css' ) );
 
 		$settings								= shortcode_atts(
 			array(
@@ -46,7 +46,7 @@ class sv_post_latest extends init {
 		);
 
 		ob_start();
-		include( $this->get_file_path( 'lib/tpl/frontend.php' ) );
+		include( $this->get_path( 'lib/tpl/frontend.php' ) );
 		$output									= ob_get_contents();
 		ob_end_clean();
 
