@@ -31,7 +31,7 @@ class sv_post_latest extends init {
 	public function shortcode( $settings, $content = '' ) {
 		// Load Styles
 		static::$scripts->create( $this )
-		                ->set_path( $this->get_path( 'lib/css/frontend.css' ) );
+		                ->set_path( 'lib/css/frontend.css' );
 
 		$settings								= shortcode_atts(
 			array(
