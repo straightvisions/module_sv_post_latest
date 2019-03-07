@@ -26,13 +26,14 @@ class sv_post_latest extends init {
 
 		// Action Hooks
 		add_action('widgets_init', array($this, 'sidebars'));
+
+		$this->scripts_queue['frontend']			= static::$scripts->create( $this )
+			->set_ID('frontend')
+			->set_path( 'lib/css/frontend.css' )
+			->set_inline(true);
 	}
 
 	public function shortcode( $settings, $content = '' ) {
-		// Load Styles
-		static::$scripts->create( $this )
-		                ->set_path( 'lib/css/frontend.css' );
-
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> true,
@@ -44,6 +45,11 @@ class sv_post_latest extends init {
 			$settings,
 			$this->get_module_name()
 		);
+
+		// Load Styles
+		$this->scripts_queue['frontend']
+			->set_inline($settings['inline'])
+			->set_is_enqueued();
 
 		ob_start();
 		include( $this->get_path( 'lib/tpl/frontend.php' ) );
