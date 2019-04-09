@@ -17,6 +17,9 @@ class sv_post_latest extends init {
 	}
 
 	public function init() {
+		// Translates the module
+		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
+
 		// Module Info
 		$this->set_module_title( 'SV Post Latest' );
 		$this->set_module_desc( __( 'This module gives the ability to display the latest posts via the "[sv_post_latest]" shortcode.', $this->get_module_name() ) );
